@@ -2,10 +2,21 @@
   "name": "azure-openai-dalle3-nodejs",
   "module": "src/main.ts",
   "type": "module",
+  "scripts": {
+    "start": "bun run src/main.ts",
+    "format": "prettier README.md package.json .prettierrc.json src/**/*.ts --write"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.6.0",
+    "@azure/openai": "^2.0.0",
+    "dotenv": "^16.4.7",
+    "openai": "^4.82.0",
+    "prettier": "^3.4.2"
   }
 }
