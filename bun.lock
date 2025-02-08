@@ -8,10 +8,10 @@
         "@azure/openai": "^2.0.0",
         "dotenv": "^16.4.7",
         "openai": "^4.82.0",
-        "prettier": "^3.4.2",
       },
       "devDependencies": {
         "@types/bun": "latest",
+        "prettier": "^3.4.2",
       },
       "peerDependencies": {
         "typescript": "^5.0.0",
