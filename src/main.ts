@@ -30,7 +30,8 @@ async function main() {
       continue;
     }
 
-    const filePath = genFilePath(prompt, image.url, "gens");
+    const generatedImagesDir = "gens";
+    const filePath = genFilePath(prompt, image.url, generatedImagesDir);
     await fetchWriteFile(filePath, image.url);
 
     console.log(`Image generated and saved to [${path}](${image.url})`);
