@@ -25,7 +25,10 @@ async function main() {
   const results = await client.images.generate({ prompt, model: "", n, size });
 
   for (const image of results.data) {
-    if (image.url === undefined) continue;
+    if (image.url === undefined) {
+      console.error("Image URL is undefined");
+      continue;
+    }
 
     const filePath = genFilePath(prompt, image.url, "gens");
     await fetchWriteFile(filePath, image.url);
