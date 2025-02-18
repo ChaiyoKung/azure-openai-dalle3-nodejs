@@ -2,7 +2,6 @@ import "dotenv/config";
 import { APIError, AzureOpenAI } from "openai";
 import type { ImageGenerateParams } from "openai/resources/images";
 import { DefaultAzureCredential, getBearerTokenProvider } from "@azure/identity";
-import path from "node:path";
 import { fetchWriteFile } from "./utils/fetch-write-file";
 import { genFilePath } from "./utils/gen-file-path";
 
@@ -34,7 +33,7 @@ async function main() {
     const filePath = genFilePath(prompt, image.url, generatedImagesDir);
     await fetchWriteFile(filePath, image.url);
 
-    console.log(`Image generated and saved to [${path}](${image.url})`);
+    console.log(`Image generated and saved to [${filePath}](${image.url})`);
   }
 }
 
