@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { AzureOpenAI } from "openai";
+import { APIError, AzureOpenAI } from "openai";
 import type { ImageGenerateParams } from "openai/resources/images";
 import { DefaultAzureCredential, getBearerTokenProvider } from "@azure/identity";
 import { createHash } from "crypto";
@@ -41,5 +41,9 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(error);
+  if (error instanceof APIError) {
+    console.dir(error.error, { depth: null });
+  } else {
+    console.error(error);
+  }
 });
