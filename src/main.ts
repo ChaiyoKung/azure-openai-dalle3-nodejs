@@ -2,8 +2,9 @@ import "dotenv/config";
 import { APIError, AzureOpenAI } from "openai";
 import type { ImageGenerateParams } from "openai/resources/images";
 import { DefaultAzureCredential, getBearerTokenProvider } from "@azure/identity";
-import { createHash } from "crypto";
-import { fetch, write } from "bun";
+import path from "node:path";
+import { fetchWriteFile } from "./utils/fetch-write-file";
+import { genFilePath } from "./utils/gen-file-path";
 
 // The prompt to generate images from
 const prompt: ImageGenerateParams["prompt"] =
@@ -26,15 +27,8 @@ async function main() {
   for (const image of results.data) {
     if (image.url === undefined) continue;
 
-    const hash = createHash("md5");
-    hash.update(prompt);
-    const promptHashed = hash.digest("hex");
-
-    const response = await fetch(image.url);
-    const arrayBuffer = await response.arrayBuffer();
-
-    const path: string = `gens/${promptHashed}-${Date.now()}.png`;
-    await write(path, arrayBuffer);
+    const filePath = genFilePath(prompt, image.url, "gens");
+    await fetchWriteFile(filePath, image.url);
 
     console.log(`Image generated and saved to [${path}](${image.url})`);
   }
