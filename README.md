@@ -2,6 +2,8 @@
 
 This application utilizes Azure OpenAI's API to generate images based on a given prompt. The generated images are saved to the local filesystem.
 
+![application run result](demo/result.png)
+
 ## Preparation
 
 Login to Azure and create a new resource for OpenAI. Ensure that you assign the "Cognitive Services OpenAI User" role to access the OpenAI API.
