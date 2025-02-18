@@ -1,4 +1,4 @@
-# azure-openai-dalle3-nodejs
+# Azure OpenAI DALL-E 3 Node.js
 
 This application utilizes Azure OpenAI's API to generate images based on a given prompt. The generated images are saved to the local filesystem.
 
