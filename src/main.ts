@@ -18,7 +18,7 @@ async function main() {
   const azureADTokenProvider = getBearerTokenProvider(new DefaultAzureCredential(), scope);
 
   const deployment: string = "dall-e-3";
-  const apiVersion: string = "2024-04-01-preview";
+  const apiVersion: string = "2024-02-01";
   const client = new AzureOpenAI({ azureADTokenProvider, deployment, apiVersion });
 
   const results = await client.images.generate({ prompt, model: "", n, size });
